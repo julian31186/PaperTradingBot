@@ -21,7 +21,7 @@ function ticker(tickerSymbol:String) {
       console.log(data);
     }
   });
-
+  return(url);
 }
 
 
