@@ -17,12 +17,11 @@ client.on('ready', () => {
 
 
 //<--------------------------------Command Section-------------------------------------------------->
-const symbol = 'AMD'
+var symbol:String
 client.on('messageCreate', (message) => {
-	if(message.content === symbol){
-		var method= ticker(symbol);
+	if(message.content === `$${symbol}`){
 		message.reply({
-			content: `${method}`
+			content: ticker(symbol)
 		})
 	}
 })
