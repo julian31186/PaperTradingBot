@@ -1,5 +1,7 @@
-import DiscordJS, { Intents } from 'discord.js'
+import DiscordJS, { Intents, MessageEmbed } from 'discord.js'
 import dotenv from 'dotenv'
+import ticker from './queries/stock_data'
+
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -13,6 +15,19 @@ client.on('ready', () => {
 	console.log("Bot Ready!");
 })
 
+
+//<--------------------------------Command Section-------------------------------------------------->
+const symbol = 'AMD'
+client.on('messageCreate', (message) => {
+	if(message.content === symbol){
+		var method= ticker(symbol);
+		message.reply({
+			content: `${method}`
+		})
+	}
+})
+
+
 client.on('messageCreate', (message) => {
 	if(message.content === '$port'){
 		message.reply({
@@ -20,5 +35,12 @@ client.on('messageCreate', (message) => {
 		})
 	}
 })
+
+
+//<--------------------------------End of Command Section-------------------------------------------------->
+
+
+
+
 
 client.login(process.env.TOKEN)
