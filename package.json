@@ -1,0 +1,25 @@
+{
+  "name": "papertradingbot",
+  "version": "1.0.0",
+  "description": "//Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julian31186/PaperTradingBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julian31186/PaperTradingBot/issues"
+  },
+  "homepage": "https://github.com/julian31186/PaperTradingBot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^15.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  }
+}
