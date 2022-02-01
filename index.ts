@@ -14,9 +14,9 @@ client.on('ready', () => {
 })
 
 client.on('messageCreate', (message) => {
-	if(message.content === 'ping'){
+	if(message.content === '$port'){
 		message.reply({
-			content: 'pong'
+			content: 'Here is your Portfolio!'
 		})
 	}
 })
