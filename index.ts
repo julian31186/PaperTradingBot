@@ -1,4 +1,5 @@
-import DiscordJS, { Intents, MessageEmbed } from 'discord.js'
+import DiscordJS, { Intents, Interaction, MessageEmbed } from 'discord.js'
+import { PrivacyLevels } from 'discord.js/typings/enums'
 import dotenv from 'dotenv'
 import ticker from './queries/stock_data'
 
@@ -13,31 +14,37 @@ const client = new DiscordJS.Client({
 
 client.on('ready', () => {
 	console.log("Bot Ready!");
+
+
+	const guildId = '494677400173674505'
+	const guild = client.guilds.cache.get(guildId)
+	let commands
+	if (guild) {
+		commands = guild.commands
+	} else {
+		commands = client.application?.commands
+	}
+
+	commands?.create ({
+		name: 'price',
+		description: 'Shows Price Of Specified Ticker',
+	})
 })
 
+client.on('interactionCreate', async(interaction) => {
+	if(!interaction.isCommand()) {
+		return
+	}
 
-//<--------------------------------Command Section-------------------------------------------------->
-var symbol:String
-client.on('messageCreate', (message) => {
-	if(message.content === `$${symbol}`){
-		message.reply({
-			content: ticker(symbol)
+	const { commandName, options } = interaction
+
+	if (commandName === 'price') {
+		interaction.reply({
+			content: 'deez',
+
 		})
 	}
 })
-
-
-client.on('messageCreate', (message) => {
-	if(message.content === '$port'){
-		message.reply({
-			content: 'Here is your Portfolio!'
-		})
-	}
-})
-
-
-//<--------------------------------End of Command Section-------------------------------------------------->
-
 
 
 
