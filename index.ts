@@ -14,6 +14,7 @@ const client = new DiscordJS.Client({
 
 client.on('ready', () => {
 	console.log("Bot Ready!");
+	console.log(ticker('AMD'));
 
 
 	const guildId = '494677400173674505'
